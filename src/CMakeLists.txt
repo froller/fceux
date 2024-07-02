@@ -79,8 +79,9 @@ if ( ${QT} EQUAL 6 )
 else()
 	message( STATUS "GUI Frontend: Qt5")
 	set( Qt Qt5 )
-	find_package( Qt5 REQUIRED COMPONENTS Widgets OpenGL)
 	find_package( Qt5 COMPONENTS Help QUIET)
+#	find_package( Qt5 REQUIRED COMPONENTS Widgets OpenGL)
+        find_package( Qt5 REQUIRED COMPONENTS Widgets)
 	find_package( Qt5 COMPONENTS Network)
 	find_package( Qt5 COMPONENTS Qml)
 	find_package( Qt5 COMPONENTS UiTools)
@@ -163,7 +164,7 @@ else(WIN32)
   # Use the built-in cmake find_package functions to find dependencies
   # Use package PkgConfig to detect headers/library what find_package cannot find.
   find_package(PkgConfig REQUIRED)
-  find_package(OpenGL REQUIRED)
+#  find_package(OpenGL REQUIRED)
   find_package(ZLIB REQUIRED)
 
   add_definitions( -Wall  -Wno-write-strings  -Wno-parentheses  -Wno-unused-local-typedefs  -fPIC )
@@ -743,7 +744,7 @@ target_link_libraries( ${APP_NAME}
    ${${Qt}Qml_LIBRARIES}
    ${${Qt}UiTools_LIBRARIES}
    ${${Qt}Network_LIBRARIES}
-   ${${Qt}OpenGL_LIBRARIES}
+#   ${${Qt}OpenGL_LIBRARIES}
    ${${Qt}OpenGLWidgets_LIBRARIES}
    ${OPENGL_LDFLAGS}  
  	${SDL2_LDFLAGS}
